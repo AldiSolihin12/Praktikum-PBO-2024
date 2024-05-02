@@ -220,9 +220,9 @@ public class App {
         System.out.print("Warna : ");
         String warna = scanner.nextLine();
         System.out.print("Tahun : ");
-        int tahun = getValidIntegerInput();
+        int tahun = getValidIntegerInput("Tahun : ");
         System.out.print("Harga : ");
-        int harga = getValidIntegerInput();
+        int harga = getValidIntegerInput("Harga : ");
       
         String jenis;
         do {
@@ -236,25 +236,25 @@ public class App {
         switch (jenis.toLowerCase()) {
             case "bensin":
                 System.out.print("Kapasitas Tangki : ");
-                int kapasitasTangki = getValidIntegerInput();
+                int kapasitasTangki = getValidIntegerInput("Kapasitas Tangki : ");
                 System.out.print("Konsumsi Bensin  : ");
-                int konsBensin = getValidIntegerInput();
+                int konsBensin = getValidIntegerInput("Konsumsi Bensin  : ");
                 MobilBensin mobilBensin = new MobilBensin(brand, tipe, warna, tahun, harga, "Bensin", kapasitasTangki, konsBensin);
                 listMobil.add(mobilBensin);
                 break;
             case "listrik":
                 System.out.print("Kapasitas Baterai : ");
-                int kapasitasBaterai = getValidIntegerInput();
+                int kapasitasBaterai = getValidIntegerInput("Kapasitas Baterai : ");
                 System.out.print("Konsumsi Baterai  : ");
-                int konsBaterai = getValidIntegerInput();
+                int konsBaterai = getValidIntegerInput("Konsumsi Baterai  : ");
                 MobilListrik mobilListrik = new MobilListrik(brand, tipe, warna, tahun, harga, "Listrik", kapasitasBaterai, konsBaterai);
                 listMobil.add(mobilListrik);
                 break;
             case "hybrid":
                 System.out.print("Kapasitas Tangki     : ");
-                int kapasitasTangkiHybrid = getValidIntegerInput();
+                int kapasitasTangkiHybrid = getValidIntegerInput("Kapasitas Tangki     : ");
                 System.out.print("Kapasitas Baterai    : ");
-                int kapasitasBateraiHybrid = getValidIntegerInput();
+                int kapasitasBateraiHybrid = getValidIntegerInput("Kapasitas Baterai    : ");
                 
                 String regen;
                 
@@ -448,7 +448,7 @@ public class App {
         }
         tampilkanMobil(false, "semua");
         System.out.print("Pilih nomor mobil yang akan diedit : ");
-        int index = getValidIntegerInput();
+        int index = getValidIntegerInput("Pilih nomor mobil yang akan diedit : ");
         index -= 1;
         if (index < 0 || index >= listMobil.size()) {
             System.out.println("Nomor mobil tidak valid !");
@@ -464,9 +464,9 @@ public class App {
         System.out.print("Warna : ");
         String warna = scanner.nextLine();
         System.out.print("Tahun : ");
-        Integer tahun = getValidIntegerInput();
+        Integer tahun = getValidIntegerInput("Tahun : ");
         System.out.print("Harga : ");
-        Integer harga = getValidIntegerInput();
+        Integer harga = getValidIntegerInput("Harga : ");
 
         if (!brand.isEmpty()) {
             mobil.setBrand(brand);
@@ -487,9 +487,9 @@ public class App {
         if (mobil instanceof MobilBensin) {
             MobilBensin mobilBensin = (MobilBensin) mobil;
             System.out.print("\nKapasitas Tangki : ");
-            Integer Tangki = getValidIntegerInput();
+            Integer Tangki = getValidIntegerInput("Kapasitas Tangki : ");
             System.out.print("Konsumsi Bensin   : ");
-            Integer Bensin = getValidIntegerInput();
+            Integer Bensin = getValidIntegerInput("Konsumsi Bensin   : ");
            
             if (Tangki != null) {
                 mobilBensin.setKapasitasTangki(Tangki);
@@ -500,9 +500,9 @@ public class App {
         } else if (mobil instanceof MobilListrik) {
             MobilListrik mobilListrik = (MobilListrik) mobil;
             System.out.print("\nKapasitas Baterai : ");
-            Integer Baterai = getValidIntegerInput();
+            Integer Baterai = getValidIntegerInput("Kapasitas Baterai : ");
             System.out.print("Konsumsi Baterai  : ");
-            Integer KonsBaterai = getValidIntegerInput();
+            Integer KonsBaterai = getValidIntegerInput("Konsumsi Baterai  : ");
            
             if (Baterai != null) {
                 mobilListrik.setKapasitasBaterai(Baterai);
@@ -513,9 +513,9 @@ public class App {
         } else if (mobil instanceof MobilHybrid) {
             MobilHybrid mobilHybrid = (MobilHybrid) mobil;
             System.out.print("\nKapasitas Tangki : ");
-            Integer Tangki = getValidIntegerInput();
+            Integer Tangki = getValidIntegerInput("Kapasitas Tangki : ");
             System.out.print("Kapasitas Baterai : ");
-            Integer Baterai = getValidIntegerInput();
+            Integer Baterai = getValidIntegerInput("Kapasitas Baterai : ");
             System.out.print("Regenerative Braking (Ya/Tidak) : ");
             String regen = scanner.nextLine();
             if (regen.equalsIgnoreCase("ya")) { 
@@ -551,7 +551,7 @@ public class App {
         }
         tampilkanMobil(false, "semua");
         System.out.print("Pilih nomor mobil yang akan dihapus : ");
-        int index = getValidIntegerInput();
+        int index = getValidIntegerInput("Pilih nomor mobil yang akan dihapus : ");
         index -= 1;
         if (index < 0 || index >= listMobil.size()) {
             System.out.println("Nomor mobil tidak valid !");
@@ -592,7 +592,7 @@ public class App {
                 break;
             case "3":
                 System.out.print("Masukkan Tahun Mobil : ");
-                int tahun = getValidIntegerInput();
+                int tahun = getValidIntegerInput("Masukkan Tahun Mobil : ");
                 tampilkanMobil(tahun);
                 System.out.println("\nTekan enter untuk kembali ke menu !");
                 scanner.nextLine();
@@ -612,7 +612,7 @@ public class App {
         System.out.flush();
     }
 
-    private static int getValidIntegerInput() {
+    private static int getValidIntegerInput(String inputan) {
         int input = 0;
         boolean isValid = false;
         do {
@@ -621,7 +621,7 @@ public class App {
                 isValid = true;
             } catch (NumberFormatException e) {
                 System.out.println("\nInput harus berupa angka !");
-                System.out.print("Input : ");
+                System.out.print(inputan);
             }
         } while (!isValid);
         return input;
